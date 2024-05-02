@@ -1,0 +1,10 @@
+{
+   "relationship_with_company": {
+      "employee": "Empleado",
+      "supplier": "Proveedor",
+      "customer": "Cliente",
+      "partners": "Socios",
+      "exemployee": "Ex-empleado",
+      "other": "Otro"
+   }
+}

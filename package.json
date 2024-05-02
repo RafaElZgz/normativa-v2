@@ -1,0 +1,39 @@
+{
+   "name": "nuxt-app-template",
+   "author": {
+      "name": "Rafael Alastuey",
+      "email": "rafa@rab-devs.com"
+   },
+   "private": true,
+   "type": "module",
+   "scripts": {
+      "build": "nuxt build",
+      "dev": "nuxt dev",
+      "generate": "nuxt generate",
+      "preview": "nuxt preview",
+      "postinstall": "nuxt prepare"
+   },
+   "dependencies": {
+      "@directus/sdk": "^15.1.0",
+      "@iconify/json": "^2.2.202",
+      "@nuxt/ui": "^2.15.2",
+      "@pinia/nuxt": "^0.5.1",
+      "filepond": "^4.31.1",
+      "filepond-plugin-file-validate-type": "^1.2.9",
+      "filepond-plugin-image-preview": "^4.6.12",
+      "maska": "^2.1.11",
+      "nuxt": "^3.11.2",
+      "nuxt-directus-next": "^0.0.15",
+      "vue": "^3.4.23",
+      "vue-filepond": "^7.0.4",
+      "vue-router": "^4.3.2"
+   },
+   "devDependencies": {
+      "@nuxtjs/i18n": "^8.2.0",
+      "@nuxtjs/seo": "2.0.0-rc.8",
+      "@pinia-plugin-persistedstate/nuxt": "^1.2.0",
+      "@vite-pwa/nuxt": "^0.6.0",
+      "sass": "^1.75.0",
+      "tailwindcss": "^3.4.1"
+   }
+}

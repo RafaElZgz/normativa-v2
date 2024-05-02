@@ -1,0 +1,31 @@
+name: Proyecto Normativa
+run-name: ${{ github.actor }} está desplegando
+on:
+  push:
+    branches:
+      - pro
+
+jobs:
+  cd_job:
+    runs-on: self-hosted
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v2.0
+        with:
+          envkey_DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
+          envkey_DIRECTUS_STATIC_TOKEN: ${{ secrets.DIRECTUS_STATIC_TOKEN }}
+          envkey_HOST: ${{ secrets.HOST }}
+          envkey_PORT: ${{ secrets.PORT }}
+          envkey_NODE_ENV: ${{ secrets.NODE_ENV }}
+          some_other_variable: foobar
+          directory: .
+          file_name: .env
+          fail_on_empty: false
+          sort_keys: false
+
+      - name: Launch Docker Compose remote
+        run: docker compose up --build -d
+      
