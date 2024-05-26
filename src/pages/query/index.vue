@@ -163,7 +163,7 @@ const goToComplaint = () => {
       "texts": {
          "h1": "Check complaint status",
          "description": "Fill out the form below to file a complaint.",
-         "h2": "Seguimiento de la denuncia"
+         "h2": "Complaint follow-up"
       },
       "form": {
          "buttons": {
@@ -171,10 +171,10 @@ const goToComplaint = () => {
          },
          "fields": {
             "code": {
-               "label": "Código"
+               "label": "Code"
             },
             "password": {
-               "label": "Contraseña"
+               "label": "Password"
             }
          }
       }
@@ -191,7 +191,7 @@ const goToComplaint = () => {
       },
       "form": {
          "buttons": {
-            "submit": "Submit"
+            "submit": "Enviar"
          },
          "fields": {
             "code": {

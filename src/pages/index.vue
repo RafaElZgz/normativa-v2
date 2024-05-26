@@ -25,7 +25,7 @@ const { t } = useI18n();
                   color="gray"
                   variant="outline"
                   size="xl">
-                  {{ 'Presentar denuncia' }}
+                  {{ t('texts.button1') }}
                </UButton>
                <UButton
                   :to="localePath('query')"
@@ -33,7 +33,7 @@ const { t } = useI18n();
                   color="primary"
                   variant="outline"
                   size="xl">
-                  {{ 'Consultar estado denuncia' }}
+                  {{ t('texts.button2') }}
                </UButton>
             </div>
          </div>
@@ -49,7 +49,9 @@ const { t } = useI18n();
       },
       "texts": {
          "h1": "Welcome to the whistleblower channel",
-         "description": "Here you can file a new complaint or check the status of an existing one."
+         "description": "Here you can file a new complaint or check the status of an existing one.",
+         "button1": "Make a complaint",
+         "button2": "Check complaint status"
       }
    },
 
@@ -59,7 +61,9 @@ const { t } = useI18n();
       },
       "texts": {
          "h1": "Bienvenido al canal de denuncias",
-         "description": "Aquí puede presentar una nueva denuncia o consultar el estado de una existente."
+         "description": "Aquí puede presentar una nueva denuncia o consultar el estado de una existente.",
+         "button1": "Presentar una denuncia",
+         "button2": "Consultar el estado de una denuncia"
       }
    }
 }

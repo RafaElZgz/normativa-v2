@@ -124,7 +124,7 @@ async function onSubmit() {
             </UFormGroup>
          </div>
 
-         <UFormGroup description="Seguridad de la contraseña">
+         <UFormGroup :description="t('form.fields.password_strength.label')">
             <UMeter class="mt-2" :value="password_score" :min="0" :max="4" />
          </UFormGroup>
 
@@ -147,6 +147,9 @@ async function onSubmit() {
             },
             "password_confirmation": {
                "label": "Repeat password"
+            },
+            "password_strength": {
+               "label":"Password security"
             }
          }
       }
@@ -164,6 +167,9 @@ async function onSubmit() {
             },
             "password_confirmation": {
                "label": "Repita la contraseña"
+            },
+            "password_strength": {
+               "label":"Seguridad de la contraseña"
             }
          }
       }

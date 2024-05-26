@@ -137,7 +137,7 @@ const finish = async () => {
                <main class="report-resume-section">
                   <div class="space-x-1.5">
                      <span class="font-medium">
-                        {{ 'Relación con la empresa:' }}
+                        {{ t('form.fields.complaint.company_relationship') }}
                      </span>
                      <span>
                         {{
@@ -271,11 +271,11 @@ const finish = async () => {
                         class="p-4 rounded-xl bg-white inline-flex flex-row space-x-4 w-full mb-1 border">
                         <UToggle v-model="state.terms" />
                         <p class="text-sm font-normal">
-                           {{ '¿Acepta la' }}
+                           {{ t('form.fields.confirmation.policy_agreement') }}
                            <NuxtLink
                               class="text-primary underline underline-offset-2 font-medium"
                               :to="localePath('privacy-policy')">
-                              {{ 'política de privacidad' }}
+                              {{ t('form.fields.confirmation.privacy_policy') }}
                            </NuxtLink>
                            ?
                         </p>
@@ -340,10 +340,17 @@ const finish = async () => {
       },
       "form": {
          "fields": {
+            "complaint":{
+               "company_relationship":"Company relationship"
+            },
             "agent": {
                "label": "Agent",
                "placeholder": "None selected",
                "description": "Do you want someone specific to handle your complaint?"
+            },
+            "confirmation":{
+               "policy_agreement": "Do you agree the",
+               "privacy_policy":"privacy policy"
             }
          },
          "error": {
@@ -367,10 +374,17 @@ const finish = async () => {
       },
       "form": {
          "fields": {
+            "complaint":{
+               "company_relationship":"Relación con la empresa"
+            },
             "agent": {
                "label": "Agente",
                "placeholder": "Ninguno seleccionado",
                "description": "¿Quiere que alguien específico se encargue de su denuncia?"
+            },
+            "confirmation":{
+               "policy_agreement": "¿Aceptas la",
+               "privacy_policy":"política de privacidad"
             }
          },
          "error": {
