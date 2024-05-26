@@ -102,6 +102,18 @@ const finish = async () => {
 
    await navigateTo(localePath('query'));
 };
+
+function copyToClipboard(text: string) {
+   navigator.clipboard.writeText(text)
+   toast.add({
+      title: t('texts.right'),
+      icon: 'i-heroicons-check-16-solid',
+      description: t('texts.copied_code'),
+      color: 'green',
+      timeout: 2000,
+   });
+}
+
 </script>
 
 <template>
@@ -297,7 +309,7 @@ const finish = async () => {
                      <UIcon
                         name="i-heroicons-check-badge-solid"
                         class="mr-1.5 text-2xl text-green-400" />
-                     {{ 'Denuncia creada correctamente' }}
+                     {{ t('form.modal.successfully_created') }}
                   </h2>
                </div>
             </template>
@@ -306,6 +318,7 @@ const finish = async () => {
                <p class="space-x-2 text-center">
                   <span>{{ 'Código de la denuncia:' }}</span>
                   <span class="font-bold">{{ createdComplaintCode }}</span>
+                  <span><UButton @click="copyToClipboard(createdComplaintCode)"><UIcon name="i-heroicons-clipboard-document"/></UButton></span>
                </p>
                <p class="text-xs mt-2 space-x-1">
                   <span class="text-red-500 font-medium">Atención:</span>
@@ -336,7 +349,9 @@ const finish = async () => {
    "en": {
       "texts": {
          "h2": "End complaint",
-         "description": "Verify the details of your complaint before submit it."
+         "description": "Verify the details of your complaint before submit it.",
+         "right":"Right!",
+         "copied_code":"copied code to clipboard"
       },
       "form": {
          "fields": {
@@ -352,6 +367,9 @@ const finish = async () => {
                "policy_agreement": "Do you agree the",
                "privacy_policy":"privacy policy"
             }
+         },
+         "modal":{
+            "successfully_created":"Complaint successfully created"
          },
          "error": {
             "message": {
@@ -370,7 +388,9 @@ const finish = async () => {
    "es": {
       "texts": {
          "h2": "Finalizar denuncia",
-         "description": "Verifique los detalles de su denuncia antes de enviarla."
+         "description": "Verifique los detalles de su denuncia antes de enviarla.",
+         "right":"Correcto!",
+         "copied_code":"Código copiado al portapapeles"
       },
       "form": {
          "fields": {
@@ -386,6 +406,9 @@ const finish = async () => {
                "policy_agreement": "¿Aceptas la",
                "privacy_policy":"política de privacidad"
             }
+         },
+         "modal":{
+            "successfully_created":"Denuncia creada correctamente"
          },
          "error": {
             "message": {
