@@ -6,6 +6,10 @@ export default defineAppConfig({
       gray: 'zinc',
       primary: 'rab',
 
+      button: {
+         rounded: 'rounded-lg',
+      },
+
       input: {
          rounded: 'rounded-2xl',
       },

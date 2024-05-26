@@ -28,7 +28,12 @@ export default defineNuxtConfig({
       },
    },
 
-   css: ['@/assets/scss/steps.scss'],
+   css: [
+      '@/assets/scss/background.scss',
+      '@/assets/scss/query.scss',
+      '@/assets/scss/scrollbar.scss',
+      '@/assets/scss/steps.scss',
+   ],
 
    devtools: { enabled: true },
 
@@ -76,6 +81,6 @@ export default defineNuxtConfig({
    i18n: { ...i18nConfig, strategy: 'prefix' },
 
    ui: {
-      icons: ['heroicons', 'mdi'],
+      icons: ['heroicons', 'mdi', 'emojione', 'ic'],
    },
 });

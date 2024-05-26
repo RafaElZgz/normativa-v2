@@ -6,7 +6,8 @@ export type Agent = {
 
 export type Complaint = {
    id: string | undefined;
-   name?: string;
+   code?: string;
+   fullname?: string;
    email?: string;
    phone?: string;
    anon_complaint: boolean;
@@ -26,6 +27,26 @@ export type Complaint = {
    documentation: any;
    password: string;
    agent?: Agent;
+   serious: boolean;
+   resolution_category:
+      | 'not_applicable'
+      | 'appropriate_internal_resolution'
+      | 'applicable_external_resolution'
+      | 'appropriate_resolution_other'
+      | null;
+   resolution: any;
+   date_created: string;
+   date_updated: string | null;
+   closed_date: string | null;
+   end_date: string;
+   validated_date: string | null;
+   state:
+      | 'open'
+      | 'validated'
+      | 'not_validated'
+      | 'investigating'
+      | 'resolved'
+      | 'closed';
 };
 
 export type ComplaintCategory = {

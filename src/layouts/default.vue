@@ -23,13 +23,18 @@ const head = useLocaleHead({
                :content="meta.content" />
          </template>
       </Head>
-      <Body>
-         <MainLayoutHeader />
-         <main class="min-h-[calc(100vh-var(--header-height))]">
-            <NuxtPage />
-            <UNotifications />
-         </main>
-         <MainLayoutFooter />
+      <Body class="web-background">
+         <div class="h-full">
+            <ul class="web-background-particles">
+               <li v-for="n in 10"></li>
+            </ul>
+            <MainLayoutHeader />
+            <main class="min-h-[calc(100vh-var(--header-height))]">
+               <NuxtPage />
+               <UNotifications />
+            </main>
+            <MainLayoutFooter />
+         </div>
       </Body>
    </Html>
 </template>

@@ -21,6 +21,8 @@ const validate = (): FormError[] => {
       });
    }
 
+   reportStore.setCurrentStepState(errors.length === 0);
+
    return errors;
 };
 

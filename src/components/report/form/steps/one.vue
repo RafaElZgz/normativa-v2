@@ -37,7 +37,7 @@ const reportStore = useReportStore();
 const { complaint } = storeToRefs(reportStore);
 
 const state = ref({
-   name: complaint.value.name,
+   name: complaint.value.fullname,
    email: complaint.value.email,
    phone: complaint.value.phone,
    anon_complaint: complaint.value.anon_complaint,
@@ -84,7 +84,7 @@ const validate = (): FormError[] => {
 async function onSubmit() {
    reportStore.setCurrentStepID(2);
 
-   complaint.value.name = state.value.name;
+   complaint.value.fullname = state.value.name;
    complaint.value.email = state.value.email;
    complaint.value.phone = state.value.phone;
 
@@ -93,7 +93,7 @@ async function onSubmit() {
    complaint.value.anon_complaint = state.value.anon_complaint;
 
    if (complaint.value.anon_complaint) {
-      complaint.value.name = undefined;
+      complaint.value.fullname = undefined;
       complaint.value.email = undefined;
       complaint.value.phone = undefined;
    }

@@ -48,6 +48,8 @@ const validate = (): FormError[] => {
       });
    }
 
+   reportStore.setCurrentStepState(errors.length === 0);
+
    return errors;
 };
 
@@ -80,7 +82,7 @@ async function onSubmit() {
          class="steps-card-form">
          <div class="steps-grid-cols-2">
             <div
-               class="border rounded-2xl px-4 py-2"
+               class="border rounded-2xl px-4 py-2 dark:border-neutral-500"
                :class="useToggleBoxClass(state.witnesses)">
                <UFormGroup
                   :label="t('form.fields.witnesses.label')"
@@ -89,7 +91,7 @@ async function onSubmit() {
                </UFormGroup>
             </div>
             <div
-               class="border rounded-2xl px-4 py-2"
+               class="border rounded-2xl px-4 py-2 dark:border-neutral-500"
                :class="useToggleBoxClass(state.evidence)">
                <UFormGroup
                   :label="t('form.fields.evidence.label')"

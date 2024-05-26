@@ -65,20 +65,24 @@ const validate = (): FormError[] => {
       });
    }
 
+   reportStore.setCurrentStepState(errors.length === 0);
+
    return errors;
 };
 
 async function onSubmit() {
    reportStore.setCurrentStepID(6);
 
+   /*
    const password = await $fetch('/api/hashString', {
       method: 'POST',
       body: {
          string: state.value.password,
       },
    });
+   */
 
-   complaint.value.password = password;
+   complaint.value.password = state.value.password;
 }
 </script>
 

@@ -1,24 +1,24 @@
 .steps-card-wrapper {
-   @apply pt-3 pb-6;
+   @apply pt-4 pb-8;
 }
 
 .steps-card-header {
    @apply space-y-0.5;
 
    h2 {
-      @apply font-semibold text-lg sm:text-xl text-neutral-800;
+      @apply font-semibold text-lg sm:text-xl text-neutral-800 dark:text-neutral-200;
    }
 
    p {
-      @apply text-xs sm:text-sm text-neutral-600;
+      @apply text-xs sm:text-sm text-neutral-600 dark:text-neutral-400;
    }
 }
 
 .steps-card-form {
-   @apply grid gap-y-2.5 mt-6;
+   @apply grid gap-y-6 mt-6;
 
    & .steps-grid-cols-2 {
-      @apply grid sm:grid-cols-2 sm:gap-x-10 gap-y-2.5 sm:gap-y-0;
+      @apply grid sm:grid-cols-2 sm:gap-x-10 gap-y-6 sm:gap-y-0;
    }
 }
 

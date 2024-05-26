@@ -40,12 +40,12 @@ const getStepClass = (id: number) => {
    const afterCommonClasses =
       "after:content-[''] after:w-full after:h-0.5 after:inline-block after:absolute lg:after:top-5 lg:after:left-8 after:top-4 after:left-4";
 
-   let className = 'text-neutral-800 after:bg-gray-200';
+   let className = 'text-neutral-800 after:bg-neutral-300 dark:text-neutral-400 dark:after:bg-neutral-500';
 
    if (currentStep.value.id > id) {
       className = 'text-white after:bg-primary';
    } else if (currentStep.value.id === id) {
-      className = 'text-primary after:bg-gray-200';
+      className = 'text-primary after:bg-neutral-300 dark:text-white dark:after:bg-neutral-500';
    }
 
    if (id < steps.length) {
@@ -60,12 +60,12 @@ const getStepDotClass = (id: number) => {
    const isPast = currentStep.value.id > id;
 
    const className = {
-      bg: isPast ? 'bg-primary' : isCurrent ? 'bg-primary-50' : 'bg-gray-50',
+      bg: isPast ? 'bg-primary' : isCurrent ? 'bg-primary-100 dark:bg-primary-700' : 'bg-neutral-50 dark:bg-neutral-800',
       border: isPast
          ? 'border-transparent'
          : isCurrent
-         ? 'border-primary'
-         : 'border-gray-200',
+         ? 'border-primary dark:border-white'
+         : 'border-gray-300 dark:border-neutral-500',
    };
 
    return `${className.bg} ${className.border}`;
@@ -83,7 +83,7 @@ const getStepDotClass = (id: number) => {
             :class="getStepClass(item.id)">
             <div class="block whitespace-nowrap z-10">
                <span
-                  class="w-8 h-8 border-2 rounded-full flex justify-center items-center mx-auto text-sm lg:text-normal lg:w-10 lg:h-10"
+                  class="w-8 h-8 border-2 border-gray-300 rounded-full flex justify-center items-center mx-auto text-sm lg:text-normal lg:w-10 lg:h-10"
                   :class="getStepDotClass(item.id)">
                   {{ item.id }}
                </span>

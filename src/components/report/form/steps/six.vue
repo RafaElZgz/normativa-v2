@@ -4,7 +4,7 @@ import type { FormError, FormSubmitEvent } from '#ui/types';
 const { t } = useI18n({
    useScope: 'local',
 });
-const { readItems } = useDirectusItems();
+const { createItem, readItems } = useDirectusItems();
 
 const localePath = useLocalePath();
 const reportStore = useReportStore();
@@ -45,6 +45,8 @@ const tabs = [
 ];
 
 const currentTab = ref(0);
+const createdComplaintCode = ref('');
+const createdComplaintModalOpen = ref(false);
 
 const validate = (): FormError[] => {
    const errors: FormError[] = [];
@@ -58,6 +60,8 @@ const validate = (): FormError[] => {
       currentTab.value = 3;
    }
 
+   reportStore.setCurrentStepState(errors.length === 0);
+
    return errors;
 };
 
@@ -65,12 +69,13 @@ const bool2text = (input: boolean): string => {
    return input === true ? 'Sí' : 'No';
 };
 
-async function onSubmit(event: FormSubmitEvent<any>) {
+async function onSubmit() {
    complaint.value.agent = state.value.agent;
+   reportStore.setCurrentStepState(false);
 
    try {
-      console.log('Denuncia:', complaint.value);
-      //throw new Error('Simulated error occurred.');
+      const result = await createItem('complaints', complaint.value);
+      createdComplaintCode.value = result.code;
    } catch (error) {
       console.log(error);
       toast.add({
@@ -86,8 +91,17 @@ async function onSubmit(event: FormSubmitEvent<any>) {
          icon: 'i-heroicons-check-circle',
          color: 'green',
       });
+
+      createdComplaintModalOpen.value = true;
    }
 }
+
+const finish = async () => {
+   createdComplaintModalOpen.value = false;
+   reportStore.$reset();
+
+   await navigateTo(localePath('query'));
+};
 </script>
 
 <template>
@@ -144,7 +158,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
                            {{ 'Nombre:' }}
                         </span>
                         <span>
-                           {{ complaint.name }}
+                           {{ complaint.fullname }}
                         </span>
                      </div>
                      <div class="grid grid-cols-2">
@@ -222,6 +236,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
                      <UTextarea
                         resize
                         :rows="6"
+                        name="reported_facts"
                         v-model="complaint.reported_facts"
                         disabled />
                   </div>
@@ -230,9 +245,9 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
             <template #attached_docs>
                <main class="report-resume-section">
-                  <span class="m-auto"
-                     >{{ 'No disponible por el momento' }}.</span
-                  >
+                  <span class="m-auto">
+                     {{ 'No disponible por el momento' }}.
+                  </span>
                </main>
             </template>
 
@@ -259,7 +274,7 @@ async function onSubmit(event: FormSubmitEvent<any>) {
                            {{ '¿Acepta la' }}
                            <NuxtLink
                               class="text-primary underline underline-offset-2 font-medium"
-                              :to="localePath('report')">
+                              :to="localePath('privacy-policy')">
                               {{ 'política de privacidad' }}
                            </NuxtLink>
                            ?
@@ -272,6 +287,47 @@ async function onSubmit(event: FormSubmitEvent<any>) {
 
          <UButton id="submit-btn-step-6" type="submit" class="hidden" />
       </UForm>
+
+      <UModal v-model="createdComplaintModalOpen" fullscreen>
+         <UCard class="m-auto">
+            <template #header>
+               <div class="flex items-center justify-between">
+                  <h2
+                     class="text-lg font-semibold inline-flex items-center text-center mx-auto">
+                     <UIcon
+                        name="i-heroicons-check-badge-solid"
+                        class="mr-1.5 text-2xl text-green-400" />
+                     {{ 'Denuncia creada correctamente' }}
+                  </h2>
+               </div>
+            </template>
+
+            <div>
+               <p class="space-x-2 text-center">
+                  <span>{{ 'Código de la denuncia:' }}</span>
+                  <span class="font-bold">{{ createdComplaintCode }}</span>
+               </p>
+               <p class="text-xs mt-2 space-x-1">
+                  <span class="text-red-500 font-medium">Atención:</span>
+                  <span class="italic">
+                     {{
+                        'Asegurese de guardar este código para poder consultar el estado.'
+                     }}
+                  </span>
+               </p>
+            </div>
+
+            <template #footer>
+               <div class="flex items-center justify-between">
+                  <UButton
+                     @click="finish()"
+                     label="Terminar"
+                     class="m-auto"
+                     trailing-icon="i-heroicons-arrow-right-end-on-rectangle" />
+               </div>
+            </template>
+         </UCard>
+      </UModal>
    </div>
 </template>
 

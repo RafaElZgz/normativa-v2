@@ -48,17 +48,17 @@ const onSubmit = async () => {
    <section class="min-h-[calc(100vh-var(--header-height))] inline-flex w-full">
       <div class="max-w-screen-md m-auto w-full py-8 md:px-12">
          <div class="text-center space-y-1 px-4 sm:px-0">
-            <h1 class="text-2xl sm:text-3xl font-bold text-neutral-800">
+            <h1 class="text-2xl sm:text-3xl font-bold">
                {{ t('texts.h1') }}
             </h1>
-            <p class="text-md text-neutral-600 sm:text-lg">
+            <p class="text-md text-neutral-600 dark:text-neutral-400 sm:text-lg">
                {{ t('texts.description') }}
             </p>
          </div>
          <div
-            class="w-full my-2 sm:my-4 md:rounded-3xl md:shadow-lg px-6 md:px-10 flex flex-col md:border border-gray-200 dark:border-gray-800">
+            class="w-full my-2 sm:my-4 md:rounded-3xl md:shadow-lg px-6 md:px-10 flex flex-col md:border backdrop-blur-xl border-neutral-200 bg-white/60 dark:border-neutral-700 dark:bg-neutral-900/90">
             <ReportFormStepper />
-            <UDivider class="px-4" />
+            <UDivider size="xs" class="px-4" />
             <Transition name="step-transition" mode="out-in">
                <component :is="currentStepComponent" />
             </Transition>
@@ -72,6 +72,7 @@ const onSubmit = async () => {
                trailing-icon="i-mdi-send"
                :ui="{ rounded: 'rounded-3xl' }"
                variant="outline"
+               :disabled="!currentStep.valid"
                class="float-right">
                {{ t('form.submit') }}
             </UButton>
@@ -101,7 +102,6 @@ const onSubmit = async () => {
          </div>
       </div>
    </section>
-   <section class="h-screen"></section>
 </template>
 
 <i18n lang="json">
