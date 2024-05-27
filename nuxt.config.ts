@@ -45,6 +45,7 @@ export default defineNuxtConfig({
       '@pinia-plugin-persistedstate/nuxt',
       // '@vite-pwa/nuxt',
       'nuxt-directus-next',
+      '@sidebase/nuxt-pdf'
    ],
 
    runtimeConfig: {

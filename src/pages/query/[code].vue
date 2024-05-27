@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { exportToPDF } from '#imports'
+import from ''
 definePageMeta({
    middleware: 'complaint-password',
 });
@@ -69,6 +71,10 @@ const closeComplaint = () => {
 onMounted(() => {
    if (!queryStore.getResult) goQueryPage();
 });
+
+function downloadPDF(){
+   
+}
 </script>
 
 <template>
@@ -175,3 +181,19 @@ onMounted(() => {
    }
 }
 </i18n>
+function createPDF() {
+   throw new Error('Function not implemented.');
+}
+
+function streamReturnPDF(event: Event | undefined, pdf: any) {
+   throw new Error('Function not implemented.');
+}
+
+function createPDF() {
+   throw new Error('Function not implemented.');
+}
+
+function streamReturnPDF(event: Event | undefined, pdf: any) {
+   throw new Error('Function not implemented.');
+}
+
