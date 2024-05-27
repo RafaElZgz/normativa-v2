@@ -21,7 +21,7 @@ const { t } = useI18n();
                class="space-y-4 md:space-y-0 md:space-x-4 mx-auto inline-flex flex-col md:flex-row">
                <UButton
                   :to="localePath('report')"
-                  icon="i-heroicons-arrow-down-tray-solid"
+                  icon="i-heroicons-plus"
                   color="gray"
                   variant="outline"
                   size="xl">

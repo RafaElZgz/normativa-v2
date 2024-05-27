@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { exportToPDF } from '#imports'
-import from ''
+
 definePageMeta({
    middleware: 'complaint-password',
 });
@@ -101,7 +101,7 @@ function downloadPDF(){
                      color="black"
                      variant="solid"
                      size="xs">
-                     {{ 'Descargar' }}
+                     {{ t('texts.download') }}
                   </UButton>
                   <UButton
                      @click="closeComplaint"
@@ -109,7 +109,7 @@ function downloadPDF(){
                      color="primary"
                      variant="solid"
                      size="xs">
-                     {{ 'Cerrar denuncia' }}
+                     {{ t('texts.close_complaint') }}
                   </UButton>
                </div>
             </div>
@@ -154,7 +154,9 @@ function downloadPDF(){
       },
       "texts": {
          "h1": "Check complaint status",
-         "description": "Fill out the form below to file a complaint."
+         "description": "Fill out the form below to file a complaint.",
+         "download":"Download",
+         "close_complaint": "Close complaint"
       },
       "tabs": {
          "info": "Information",
@@ -169,8 +171,10 @@ function downloadPDF(){
          "title": "Consultar denuncia"
       },
       "texts": {
-         "h1": "Check complaint status",
-         "description": "Fill out the form below to file a complaint."
+         "h1": "Comprobar estado de la denuncia",
+         "description": "Aquí tiene la información que se ha recuperado.",
+         "download":"Descargar",
+         "close_complaint":"Cerrar denuncia"
       },
       "tabs": {
          "info": "Información",
